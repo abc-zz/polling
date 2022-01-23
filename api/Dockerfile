@@ -27,6 +27,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 FROM openjdk:8-jre-alpine
 
 ARG DEPENDENCY=/app/target/dependency
+RUN apk update && apk add bash
 
 # Copy project dependencies from the build stage
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
