@@ -29,9 +29,7 @@ FROM openjdk:8-jre-alpine
 ARG DEPENDENCY=/app/target/dependency
 
 RUN set -ex\
-	  && apt update -y --allow-releaseinfo-change \
-    && apt upgrade -y \
-    && apt install -y wget procps nano net-tools inetutils-ping 
+    && apk add  wget procps nano net-tools inetutils-ping 
 
 # Copy project dependencies from the build stage
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
