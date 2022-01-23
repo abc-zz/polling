@@ -28,7 +28,8 @@ FROM openjdk:8-jre-alpine
 
 ARG DEPENDENCY=/app/target/dependency
 
-RUN set -ex\
+RUN set -ex \
+    && apk update \
     && apk add  wget procps nano net-tools inetutils-ping 
 
 # Copy project dependencies from the build stage
